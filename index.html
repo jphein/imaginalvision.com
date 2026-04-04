@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imaginal Vision — Expressive Art Therapy & Digital Tools</title>
+<meta name="description" content="Imaginal Vision — expressive art therapy tools and digital creative exploration by Cassandra Clark, LMFT. Art Cards and Dreamscape for clients, students, therapists, and creative explorers.">
+<meta property="og:title" content="Imaginal Vision — Expressive Art Therapy & Digital Tools">
+<meta property="og:description" content="Where creative expression meets therapeutic insight. Digital tools for expressive arts therapy, dreamwork, and creative exploration.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>
+  // FOUC prevention: apply stored theme before CSS loads
+  (function(){var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)})();
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
+
+/* ========================================================================
+   CSS Reset
+   ======================================================================== */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ========================================================================
+   Custom Properties — Light Mode (default)
+   ======================================================================== */
+
+:root {
+  --bg: #faf9f7;
+  --bg-warm: #f5f0eb;
+  --bg-gradient-start: #f5f0eb;
+  --bg-gradient-end: #c9b8a8;
+  --text-primary: #3a3028;
+  --text-body: #4a4a4a;
+  --text-secondary: #5a4a3a;
+  --text-muted: #8a7a6a;
+  --accent-earth: #c9b8a8;
+  --accent-gold: #c9a84c;
+  --accent-lavender: #a78bfa;
+  --border: #ebe6e0;
+
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', sans-serif;
+
+  --card-bg: #ffffff;
+  --card-preview-base: #1a1520;
+  --quote-bg: #f5f0eb;
+  --practice-bg: #f5f0eb;
+
+  color-scheme: light dark;
+}
+
+/* ========================================================================
+   Custom Properties — Dark Mode (system preference)
+   ======================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f0a12;
+    --bg-warm: #1a1320;
+    --bg-gradient-start: #1a1320;
+    --bg-gradient-end: #251a30;
+    --text-primary: #f5f0eb;
+    --text-body: #d4c8bb;
+    --text-secondary: #c9b8a8;
+    --text-muted: #8a7a6a;
+    --accent-earth: #c9b8a8;
+    --accent-gold: #c9a84c;
+    --accent-lavender: #c4b5fd;
+    --border: rgba(255, 255, 255, 0.08);
+
+    --card-bg: rgba(255, 255, 255, 0.04);
+    --card-preview-base: #0d0810;
+    --quote-bg: rgba(255, 255, 255, 0.03);
+    --practice-bg: rgba(255, 255, 255, 0.03);
+  }
+}
+
+/* ========================================================================
+   Custom Properties — Dark Mode (manual override)
+   ======================================================================== */
+
+:root[data-theme="dark"] {
+  --bg: #0f0a12;
+  --bg-warm: #1a1320;
+  --bg-gradient-start: #1a1320;
+  --bg-gradient-end: #251a30;
+  --text-primary: #f5f0eb;
+  --text-body: #d4c8bb;
+  --text-secondary: #c9b8a8;
+  --text-muted: #8a7a6a;
+  --accent-earth: #c9b8a8;
+  --accent-gold: #c9a84c;
+  --accent-lavender: #c4b5fd;
+  --border: rgba(255, 255, 255, 0.08);
+
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --card-preview-base: #0d0810;
+  --quote-bg: rgba(255, 255, 255, 0.03);
+  --practice-bg: rgba(255, 255, 255, 0.03);
+}
+
+/* ========================================================================
+   Base Styles
+   ======================================================================== */
+
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--text-body);
+  background: var(--bg);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================================================
+   Hero
+   ======================================================================== */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(
+    135deg,
+    var(--bg-gradient-start) 0%,
+    color-mix(in srgb, var(--bg-gradient-start) 60%, var(--bg-gradient-end)) 30%,
+    color-mix(in srgb, var(--bg-gradient-start) 30%, var(--bg-gradient-end)) 60%,
+    var(--bg-gradient-end) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(168, 130, 100, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 50%, rgba(120, 100, 140, 0.06) 0%, transparent 50%);
+  animation: drift 20s ease-in-out infinite;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+.hero-logo {
+  width: 90px;
+  height: auto;
+  margin: 0 auto 1.5rem;
+  opacity: 0.35;
+  filter: invert(1) sepia(0.3) saturate(0.5) brightness(0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .hero-logo {
+    filter: none;
+    opacity: 0.4;
+  }
+}
+
+:root[data-theme="dark"] .hero-logo {
+  filter: none;
+  opacity: 0.4;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.hero .subtitle {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  font-variant: small-caps;
+}
+
+.hero .tagline {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+/* ========================================================================
+   Keyframes
+   ======================================================================== */
+
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-2%, 1%); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* ========================================================================
+   Sticky Nav
+   ======================================================================== */
+
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.75rem 2rem;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+
+.sticky-nav.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.sticky-nav a {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+  padding: 0.25rem 0;
+}
+
+.sticky-nav a:hover {
+  color: var(--text-primary);
+}
+
+/* ========================================================================
+   Theme Toggle
+   ======================================================================== */
+
+.theme-toggle {
+  position: relative;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  background: var(--bg-warm);
+  cursor: pointer;
+  transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  margin-left: 0.5rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.theme-toggle:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-earth);
+}
+
+.theme-toggle .icon { pointer-events: none; }
+
+.hero-theme-toggle {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 10;
+}
+
+/* ========================================================================
+   Sections — Base
+   ======================================================================== */
+
+section {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+section h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+section h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+  margin-top: 2rem;
+}
+
+section p {
+  margin-bottom: 1.2rem;
+  color: var(--text-body);
+  line-height: 1.7;
+}
+
+/* ========================================================================
+   Tools Section
+   ======================================================================== */
+
+.tools {
+  max-width: 860px;
+}
+
+.tool-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.tool-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.tool-card:hover {
+  transform: translateY(-2px);
+}
+
+.tool-card--gold:hover {
+  box-shadow: 0 8px 30px rgba(201, 168, 76, 0.2), 0 0 0 1px rgba(201, 168, 76, 0.15);
+}
+
+.tool-card--lavender:hover {
+  box-shadow: 0 8px 30px rgba(167, 139, 250, 0.2), 0 0 0 1px rgba(167, 139, 250, 0.15);
+}
+
+.tool-card .preview {
+  height: 180px;
+  background: var(--card-preview-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.tool-card--gold .preview {
+  background: linear-gradient(
+    135deg,
+    var(--card-preview-base) 0%,
+    color-mix(in srgb, var(--card-preview-base), var(--accent-gold) 10%) 100%
+  );
+}
+
+.tool-card--lavender .preview {
+  background: linear-gradient(
+    135deg,
+    var(--card-preview-base) 0%,
+    color-mix(in srgb, var(--card-preview-base), var(--accent-lavender) 10%) 100%
+  );
+}
+
+.preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tool-card .preview-label {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.tool-card--gold .preview-label {
+  color: var(--accent-gold);
+}
+
+.tool-card--lavender .preview-label {
+  color: var(--accent-lavender);
+}
+
+.tool-card .card-body {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.tool-card h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.tool-card p {
+  font-size: 0.95rem;
+  color: var(--text-body);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.tool-card .credential {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+  font-style: italic;
+  display: block;
+}
+
+.tool-card .cta {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  align-self: flex-start;
+}
+
+.tool-card--gold .cta {
+  background: rgba(201, 168, 76, 0.1);
+  color: var(--accent-gold);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+.tool-card--gold .cta:hover {
+  background: rgba(201, 168, 76, 0.18);
+  box-shadow: 0 2px 12px rgba(201, 168, 76, 0.15);
+}
+
+.tool-card--lavender .cta {
+  background: rgba(167, 139, 250, 0.1);
+  color: var(--accent-lavender);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+}
+
+.tool-card--lavender .cta:hover {
+  background: rgba(167, 139, 250, 0.18);
+  box-shadow: 0 2px 12px rgba(167, 139, 250, 0.15);
+}
+
+/* ========================================================================
+   Quote Block
+   ======================================================================== */
+
+.quote {
+  border-left: 3px solid var(--accent-earth);
+  padding: 1.25rem 1.75rem;
+  margin: 2rem 0;
+  background: var(--quote-bg);
+  border-radius: 0 8px 8px 0;
+}
+
+.quote p {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.quote cite {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-style: normal;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ========================================================================
+   Audience Grid (Who It's For)
+   ======================================================================== */
+
+.audience-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.audience-block {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.75rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.audience-block:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.audience-block h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin: 0 0 0.75rem 0;
+}
+
+.audience-block p {
+  font-size: 0.9rem;
+  color: var(--text-body);
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* ========================================================================
+   About Section
+   ======================================================================== */
+
+.about-content {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  margin-top: 2rem;
+}
+
+.about-photo {
+  width: 180px;
+  height: 180px;
+  min-width: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;
+  border: 3px solid var(--border);
+}
+
+.about-text p {
+  margin-bottom: 1rem;
+}
+
+/* ========================================================================
+   Practice Section (Creative Sight Counseling)
+   ======================================================================== */
+
+.practice-section {
+  background: var(--practice-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 3rem;
+  margin-top: 2rem;
+}
+
+.practice-section h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.practice-intro {
+  margin-bottom: 2rem;
+}
+
+.practice-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.practice-detail h3 {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 0.5rem 0;
+}
+
+.practice-detail p,
+.practice-detail li {
+  font-size: 0.9rem;
+  color: var(--text-body);
+  line-height: 1.6;
+}
+
+.practice-detail ul {
+  list-style: none;
+  padding: 0;
+}
+
+.practice-detail li {
+  padding: 0.15rem 0;
+}
+
+.practice-cta {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  background: var(--accent-earth);
+  color: var(--text-primary);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.practice-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(201, 184, 168, 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .practice-cta {
+    background: rgba(201, 184, 168, 0.15);
+    color: var(--accent-earth);
+    border: 1px solid rgba(201, 184, 168, 0.2);
+  }
+  :root:not([data-theme="light"]) .practice-cta:hover {
+    background: rgba(201, 184, 168, 0.25);
+    box-shadow: 0 4px 16px rgba(201, 184, 168, 0.15);
+  }
+  :root:not([data-theme="light"]) .audience-block:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+:root[data-theme="dark"] .practice-cta {
+  background: rgba(201, 184, 168, 0.15);
+  color: var(--accent-earth);
+  border: 1px solid rgba(201, 184, 168, 0.2);
+}
+:root[data-theme="dark"] .practice-cta:hover {
+  background: rgba(201, 184, 168, 0.25);
+  box-shadow: 0 4px 16px rgba(201, 184, 168, 0.15);
+}
+:root[data-theme="dark"] .audience-block:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================================================
+   Footer
+   ======================================================================== */
+
+footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  border-top: 1px solid var(--border);
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+footer a {
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: var(--text-primary);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-links a,
+.footer-links span {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.copyright {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ========================================================================
+   Fade-In Animation
+   ======================================================================== */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================================================
+   Responsive — Mobile (< 768px)
+   ======================================================================== */
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: clamp(2.4rem, 10vw, 3.5rem);
+  }
+
+  .hero .subtitle {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+  }
+
+  .hero .tagline {
+    font-size: 1.15rem;
+  }
+
+  section {
+    padding: 3.5rem 1.5rem;
+  }
+
+  section h2 {
+    font-size: 1.6rem;
+  }
+
+  .sticky-nav {
+    gap: 1.25rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .sticky-nav a {
+    font-size: 0.7rem;
+  }
+
+  .tool-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .tool-card .preview {
+    height: 140px;
+  }
+
+  .audience-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .about-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .about-photo {
+    width: 140px;
+    height: 140px;
+    min-width: 140px;
+  }
+
+  .practice-section {
+    padding: 2rem 1.5rem;
+  }
+
+  .practice-details {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  footer .footer-links {
+    gap: 1.25rem;
+  }
+}
+
+/* ========================================================================
+   Reduced Motion
+   ======================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero::before { animation: none; }
+  .scroll-hint { animation: none; opacity: 0.7; }
+  .fade-in { opacity: 1; transform: none; transition: none; }
+  .tool-card { transition: none; }
+  .tool-card:hover { transform: none; }
+  .sticky-nav { transition: none; }
+  .practice-cta { transition: none; }
+  .practice-cta:hover { transform: none; }
+  .audience-block { transition: none; }
+  .tool-card .cta { transition: none; }
+  footer a { transition: none; }
+  .sticky-nav a { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <button class="theme-toggle hero-theme-toggle" id="hero-theme-toggle" aria-label="Toggle theme">
+    <span class="icon"></span>
+  </button>
+  <div class="hero-content">
+    <img src="images/logo-white.png" alt="" class="hero-logo">
+    <h1><em>Imaginal</em> Vision</h1>
+    <div class="subtitle">Expressive Art Therapy &amp; Digital Tools</div>
+    <div class="tagline">Where creative expression meets therapeutic insight</div>
+  </div>
+  <div class="scroll-hint">scroll to explore</div>
+</div>
+
+<!-- ===== STICKY NAV ===== -->
+<nav class="sticky-nav" id="sticky-nav">
+  <a href="#tools">Art Cards</a>
+  <a href="#tools">Dreamscape</a>
+  <a href="#about">About</a>
+  <button class="theme-toggle" id="nav-theme-toggle" aria-label="Toggle theme">
+    <span class="icon"></span>
+  </button>
+</nav>
+
+<!-- ===== TOOLS ===== -->
+<section id="tools" class="tools fade-in">
+  <div class="tool-cards">
+    <a href="https://artcards.imaginalvision.com" class="tool-card tool-card--gold">
+      <div class="preview">
+        <img id="artcards-img" src="images/artcards-light.png" alt="Art Cards — expressive art card deck" class="preview-img">
+      </div>
+      <div class="card-body">
+        <h3>Art Cards</h3>
+        <p>Expressive art card deck for therapeutic exploration, dreamwork, and clinical training.</p>
+        <span class="credential">Used at CIIS for intake training</span>
+        <span class="cta">Explore &rarr;</span>
+      </div>
+    </a>
+    <a href="https://dreamscape.imaginalvision.com" class="tool-card tool-card--lavender">
+      <div class="preview">
+        <img id="dreamscape-img" src="images/dreamscape-light.png" alt="Dreamscape — digital collage tool" class="preview-img">
+      </div>
+      <div class="card-body">
+        <h3>Dreamscape</h3>
+        <p>Digital collage tool for dreamwork and creative self-exploration.</p>
+        <span class="credential">Self-guided or therapist-facilitated</span>
+        <span class="cta">Create &rarr;</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ===== WHAT IS THE IMAGINAL? ===== -->
+<section id="imaginal" class="fade-in">
+  <h2>What is the Imaginal?</h2>
+
+  <p>In 1964, the French philosopher Henry Corbin coined the word <strong>imaginal</strong> to describe something most of us sense but struggle to name &mdash; a way of knowing through images that is as real as sight or reason. Not imaginary, not make-believe, but a genuine mode of perception. The imaginal is what happens when a painting moves you before you can explain why, or when a dream image stays with you long after waking.</p>
+
+  <p>The psychologist James Hillman made this idea central to his life's work. He saw imagination not as escapism but as the very foundation of the psyche &mdash; the place where meaning is made. Later, Shaun McNiff brought the imaginal into the therapy room through expressive arts, showing that when we draw, collage, write, or move, we're not just expressing ourselves. We're participating in something deeper: a creative dialogue with our own inner life.</p>
+
+  <blockquote class="quote">
+    <p>&ldquo;An image is not what one sees but the way in which one sees.&rdquo;</p>
+    <cite>Edward Casey, philosopher</cite>
+  </blockquote>
+
+  <p>Art Cards and Dreamscape are built on this tradition. They're tools for imaginal seeing &mdash; ways to work with images as a path toward insight, whether in a therapy session, a classroom, or a quiet moment of personal exploration.</p>
+</section>
+
+<!-- ===== WHO IT'S FOR ===== -->
+<section id="audience" class="fade-in">
+  <h2>Who It's For</h2>
+  <div class="audience-grid">
+    <div class="audience-block">
+      <h3>Clients</h3>
+      <p>Use Art Cards and Dreamscape between sessions or during telehealth to deepen your expressive arts work.</p>
+    </div>
+    <div class="audience-block">
+      <h3>Students &amp; Educators</h3>
+      <p>A training tool for expressive arts programs. Currently used at CIIS for intake training.</p>
+    </div>
+    <div class="audience-block">
+      <h3>Therapists</h3>
+      <p>Integrate these tools into your own practice, whether you work in-person or remotely.</p>
+    </div>
+    <div class="audience-block">
+      <h3>Creative Explorers</h3>
+      <p>No therapy background needed. Browse the card deck, create a collage, see what emerges.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="fade-in">
+  <h2>About</h2>
+  <div class="about-content">
+    <img src="images/cassandra.jpg" alt="Cassandra Clark, LMFT" class="about-photo">
+    <div class="about-text">
+      <p>Cassandra Clark is a Licensed Marriage and Family Therapist (LMFT&nbsp;#116676) with over nine years of clinical experience. She holds an MA in Counseling Psychology with an emphasis in Expressive Arts Therapy from the California Institute of Integral Studies (CIIS) in San Francisco.</p>
+      <p>Her practice is rooted in Jungian and transpersonal psychology, drawing on expressive arts, dreamwork, and guided imagery to help clients access deeper layers of meaning. She created Art Cards and Dreamscape as extensions of this work&mdash;tools that bring the therapeutic imagination into digital space.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CREATIVE SIGHT COUNSELING ===== -->
+<section id="practice" class="practice-section fade-in">
+  <h2>Creative Sight Counseling</h2>
+  <p class="practice-intro">Trauma-informed therapy grounded in expressive arts, guided imagery, and depth psychology. Available in-person in Nevada City, CA and online for California residents.</p>
+  <div class="practice-details">
+    <div class="practice-detail">
+      <h3>Areas of Focus</h3>
+      <ul>
+        <li>Anxiety</li>
+        <li>Grief</li>
+        <li>Trauma &amp; PTSD</li>
+        <li>Life transitions</li>
+        <li>Women's issues</li>
+        <li>LGBTQ+ issues</li>
+        <li>Self-esteem</li>
+        <li>Spirituality &amp; personal growth</li>
+      </ul>
+    </div>
+    <div class="practice-detail">
+      <h3>Investment</h3>
+      <p>Sliding scale: $132&ndash;200 per session</p>
+      <p>Insurance accepted: MediCal (Partnership, Anthem, HealthNet), Blue Shield, Aetna</p>
+    </div>
+    <div class="practice-detail">
+      <h3>Groups &amp; Workshops</h3>
+      <p>Expressive arts workshops coming in 2026. Check back soon for offerings.</p>
+    </div>
+  </div>
+  <a href="https://creativesightcounseling.com" class="practice-cta" target="_blank" rel="noopener">Learn More at Creative Sight Counseling</a>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/creative.sight.counseling/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://creativesightcounseling.com" target="_blank" rel="noopener">Creative Sight Counseling</a>
+    <a href="https://creativesightcounseling.theranext.com" target="_blank" rel="noopener">Client Portal</a>
+    <span>LMFT #116676</span>
+  </div>
+  <p class="copyright">&copy; 2026 Imaginal Vision. All rights reserved.</p>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  // ── Theme System ──────────────────────────────────────────────────────
+  // Three states: 'auto' (follow system), 'light', 'dark'
+  // Stored in localStorage as 'theme'. No value = auto.
+
+  const THEME_KEY = 'theme';
+  const ICONS = { auto: '◐', light: '☀', dark: '☽' };
+  const LABELS = { auto: 'System theme', light: 'Light theme', dark: 'Dark theme' };
+  const CYCLE = ['auto', 'light', 'dark'];
+
+  function getStoredTheme() {
+    return localStorage.getItem(THEME_KEY) || 'auto';
+  }
+
+  function getEffectiveTheme(stored) {
+    if (stored === 'light' || stored === 'dark') return stored;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function applyTheme(stored) {
+    const html = document.documentElement;
+    if (stored === 'auto') {
+      html.removeAttribute('data-theme');
+    } else {
+      html.setAttribute('data-theme', stored);
+    }
+
+    // Update toggle icons
+    const effective = getEffectiveTheme(stored);
+    document.querySelectorAll('.theme-toggle').forEach(btn => {
+      btn.querySelector('.icon').textContent = ICONS[stored];
+      btn.setAttribute('aria-label', LABELS[stored]);
+      btn.title = LABELS[stored];
+    });
+
+    // Swap tool screenshots based on effective theme
+    const artcardsImg = document.getElementById('artcards-img');
+    if (artcardsImg) {
+      artcardsImg.src = effective === 'dark'
+        ? 'images/artcards-dark.png'
+        : 'images/artcards-light.png';
+    }
+    const dreamscapeImg = document.getElementById('dreamscape-img');
+    if (dreamscapeImg) {
+      dreamscapeImg.src = effective === 'dark'
+        ? 'images/dreamscape-dark.png'
+        : 'images/dreamscape-light.png';
+    }
+  }
+
+  function cycleTheme() {
+    const current = getStoredTheme();
+    const next = CYCLE[(CYCLE.indexOf(current) + 1) % CYCLE.length];
+    if (next === 'auto') {
+      localStorage.removeItem(THEME_KEY);
+    } else {
+      localStorage.setItem(THEME_KEY, next);
+    }
+    applyTheme(next);
+  }
+
+  // Apply on load (before paint — this script runs at end of body but
+  // the inline script in <head> would be even faster for FOUC prevention)
+  applyTheme(getStoredTheme());
+
+  // Listen for system theme changes (when in auto mode)
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (getStoredTheme() === 'auto') applyTheme('auto');
+  });
+
+  // Wire up both toggle buttons
+  document.querySelectorAll('.theme-toggle').forEach(btn => {
+    btn.addEventListener('click', cycleTheme);
+  });
+
+  // ── Sticky Nav ────────────────────────────────────────────────────────
+
+  const hero = document.querySelector('.hero');
+  const stickyNav = document.getElementById('sticky-nav');
+
+  if (hero && stickyNav) {
+    const heroObserver = new IntersectionObserver(([entry]) => {
+      stickyNav.classList.toggle('visible', !entry.isIntersecting);
+    }, { threshold: 0 });
+    heroObserver.observe(hero);
+  }
+
+  // ── Scroll Fade-In ────────────────────────────────────────────────────
+
+  document.querySelectorAll('.fade-in').forEach(el => {
+    const fadeObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        fadeObserver.unobserve(entry.target);
+      }
+    }, { threshold: 0.1 });
+    fadeObserver.observe(el);
+  });
+
+  // ── Smooth Scroll ─────────────────────────────────────────────────────
+
+  document.querySelectorAll('.sticky-nav a').forEach(link => {
+    link.addEventListener('click', e => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

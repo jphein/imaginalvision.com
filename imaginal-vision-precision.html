@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why "Imaginal Vision" - Domain Proposal</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    color: #2d2d2d;
+    background: #faf9f7;
+    line-height: 1.7;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f5f0eb 0%, #e8e0d8 30%, #d4c8bb 60%, #c9b8a8 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(168,130,100,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 50%, rgba(120,100,140,0.06) 0%, transparent 50%);
+    animation: drift 20s ease-in-out infinite;
+  }
+
+  @keyframes drift {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-2%, 1%); }
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 700px; }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    color: #3a3028;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: #6b5a48;
+  }
+
+  .hero .domain {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #8a7a6a;
+    margin-bottom: 2rem;
+  }
+
+  .hero .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #5a4a3a;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #a09080;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  section {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 2rem;
+    color: #3a3028;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: #5a4a3a;
+    margin-bottom: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  p { margin-bottom: 1.2rem; color: #4a4a4a; }
+
+  .quote {
+    border-left: 3px solid #c9b8a8;
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    background: #f5f0eb;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #5a4a3a;
+    margin-bottom: 0.5rem;
+  }
+
+  .quote cite {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-style: normal;
+    color: #8a7a6a;
+    letter-spacing: 0.05em;
+  }
+
+  .reasons {
+    display: grid;
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+
+  .reason {
+    background: white;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border: 1px solid #ebe6e0;
+  }
+
+  .reason .number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #c9b8a8;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .reason h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #3a3028;
+    margin-bottom: 0.5rem;
+  }
+
+  .reason p { font-size: 0.9rem; margin-bottom: 0; }
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: #c9b8a8;
+    margin: 4rem auto;
+  }
+
+  .domain-card {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #f5f0eb, #ebe6e0);
+    border-radius: 16px;
+    margin: 2rem 0;
+  }
+
+  .domain-card .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #3a3028;
+    margin-bottom: 0.5rem;
+  }
+
+  .domain-card .tld {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #8a7a6a;
+  }
+
+  .domain-card .status {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.3rem 1rem;
+    background: #4a7c59;
+    color: white;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .comparison {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+  }
+
+  .comparison th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid #c9b8a8;
+    font-weight: 500;
+    color: #3a3028;
+  }
+
+  .comparison td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #ebe6e0;
+    color: #4a4a4a;
+  }
+
+  .comparison tr:last-child td { border-bottom: none; }
+
+  .check { color: #4a7c59; }
+  .cross { color: #b0b0b0; }
+
+  footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    font-size: 0.8rem;
+    color: #a09080;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-content">
+    <h1><em>Imaginal</em> Vision</h1>
+    <div class="domain">imaginalvision.com</div>
+    <div class="tagline">Where creative expression meets therapeutic insight</div>
+  </div>
+  <div class="scroll-hint">scroll to explore</div>
+</div>
+
+<section>
+  <h2>What does "imaginal" mean?</h2>
+
+  <p>The word <strong>imaginal</strong> was coined by <strong>Henry Corbin</strong> (1903&ndash;1978), the French philosopher and scholar of Islamic mysticism, in his landmark 1964 essay <em>Mundus Imaginalis, or the Imaginary and the Imaginal</em>. He needed a word for something the Islamic philosophers (Suhrawardi, Ibn Arabi) treated as ontologically real &mdash; an intermediate realm between the physical/sensory world and the purely intellectual. He derived "imaginal" from the Latin <em>imago</em> the same way "original" derives from <em>origo</em>, giving it a dignified, precise meaning.</p>
+
+  <p><strong>"Imaginal" is explicitly not "imaginary."</strong> Imaginary means unreal, made-up, fanciful. Imaginal means a genuine mode of perception &mdash; a way of knowing through images that is as real as sight or reason.</p>
+
+  <div class="quote">
+    <p>"An image is not what one sees but the way in which one sees."</p>
+    <cite>Edward Casey, philosopher (working with James Hillman)</cite>
+  </div>
+
+  <p><strong>James Hillman</strong> (1926&ndash;2011), founder of archetypal psychology, built directly on Corbin's work. Hillman replaced the term "unconscious" with <strong>imagination</strong>, centering images as the basis of the psyche. His definition of soul: <em>"By 'soul' I mean the imaginative possibility in our natures."</em> Scholar Walter Odajnyk argued Hillman should have called his school <strong>"imaginal psychology"</strong> rather than archetypal psychology, since it is fundamentally based on his understanding of the imagination.</p>
+
+  <div class="quote">
+    <p>"The datum with which archetypal psychology begins is the image."</p>
+    <cite>James Hillman, Re-Visioning Psychology (1975)</cite>
+  </div>
+
+  <p>In <strong>expressive arts therapy</strong>, the imaginal is foundational. <strong>Shaun McNiff</strong>, who founded the field at Lesley University in 1974 and wrote <em>Art as Medicine: Creating a Therapy of the Imagination</em>, built his entire method on dialoguing with images and treating creative works as autonomous imaginal presences. The core principle: <em>"Caring for the imaginal is caring for the psyche."</em></p>
+
+  <div class="divider"></div>
+
+  <h2>Why "Imaginal Vision"?</h2>
+
+  <div class="reasons">
+    <div class="reason">
+      <div class="number">1</div>
+      <h4>The philosophy literally pairs these two words</h4>
+      <p>Edward Casey, working alongside Hillman, defined the imaginal as <strong>"not what one sees but the way in which one sees"</strong> &mdash; a form of vision. Hillman's book is called <em>Re-Visioning Psychology</em>. The mundus imaginalis requires its own faculty of perception &mdash; a form of <strong>vision</strong> that is neither sensory sight nor abstract intellect. "Imaginal Vision" isn't a marketing invention. It's the actual concept.</p>
+    </div>
+
+    <div class="reason">
+      <div class="number">2</div>
+      <h4>It carries clinical credibility</h4>
+      <p>"Imaginal" is a recognized term in depth psychology, Jungian analysis, and expressive arts therapy. Therapists, counselors, and clinicians will immediately recognize it. It signals that this isn't just a craft project &mdash; it's grounded in a real therapeutic tradition going back through Hillman, Corbin, and Jung.</p>
+    </div>
+
+    <div class="reason">
+      <div class="number">3</div>
+      <h4>It's accessible to clients too</h4>
+      <p>Even if someone has never heard the word "imaginal," it sounds like <em>imagination</em> and <em>vision</em> &mdash; both warm, inviting, creative words. There's no jargon barrier. A client can hear "Imaginal Vision" and think "this is about seeing things in a new way through creativity." That's exactly right.</p>
+    </div>
+
+    <div class="reason">
+      <div class="number">4</div>
+      <h4>It works for both sides of the business</h4>
+      <p><strong>Digital artcards &amp; collage tools:</strong> The imaginal is literally about working with images &mdash; assembling, combining, creating visual meaning. That's what artcards and digital collage do.<br><br>
+      <strong>Therapy sessions (online &amp; in-person):</strong> "Imaginal Vision" describes the therapeutic process itself &mdash; using creative expression to see what was previously unseen, to give form to inner experience.</p>
+    </div>
+
+    <div class="reason">
+      <div class="number">5</div>
+      <h4>It's distinctive and ownable</h4>
+      <p>While "imaginal" appears in some therapy contexts, "Imaginal Vision" as a combined brand is unique. It's not generic like "Creative Arts Therapy" or "Art Healing Studio." It's a name people remember, ask about, and look up.</p>
+    </div>
+
+    <div class="reason">
+      <div class="number">6</div>
+      <h4>It sounds beautiful</h4>
+      <p>Say it out loud: <em>"Imaginal Vision."</em> Five syllables. Musical. The soft 'g' in imaginal flows into the clarity of vision. It sounds like what it is &mdash; something between a dream and a destination.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2>Domain availability</h2>
+
+  <div class="domain-card">
+    <div class="name">imaginalvision</div>
+    <div class="tld">.com &nbsp;&bull;&nbsp; .art</div>
+    <div class="status">both available</div>
+  </div>
+
+  <p>We recommend registering <strong>both</strong> domains on Cloudflare:</p>
+
+  <table class="comparison">
+    <tr>
+      <th>Domain</th>
+      <th>Role</th>
+      <th>Cost (approx/yr)</th>
+    </tr>
+    <tr>
+      <td><strong>imaginalvision.com</strong></td>
+      <td>Primary &mdash; business cards, email, official site</td>
+      <td>~$10</td>
+    </tr>
+    <tr>
+      <td><strong>imaginalvision.art</strong></td>
+      <td>Redirect to .com &mdash; memorable, shareable for the art community</td>
+      <td>~$15</td>
+    </tr>
+  </table>
+
+  <div class="divider"></div>
+
+  <h2>How it compares</h2>
+
+  <table class="comparison">
+    <tr>
+      <th>Criteria</th>
+      <th>imaginalvision.com</th>
+      <th>creative.vision</th>
+      <th>expressivecard.art</th>
+    </tr>
+    <tr>
+      <td>Available?</td>
+      <td class="check">Yes</td>
+      <td class="cross">Taken (squatter)</td>
+      <td class="check">Yes</td>
+    </tr>
+    <tr>
+      <td>Clinical credibility</td>
+      <td class="check">Strong (Hillman, Corbin)</td>
+      <td class="cross">Generic</td>
+      <td class="cross">Product-specific</td>
+    </tr>
+    <tr>
+      <td>Works for therapy sessions</td>
+      <td class="check">Yes</td>
+      <td class="check">Somewhat</td>
+      <td class="cross">Not really</td>
+    </tr>
+    <tr>
+      <td>Works for digital tools</td>
+      <td class="check">Yes (imaginal = images)</td>
+      <td class="check">Yes</td>
+      <td class="check">Yes</td>
+    </tr>
+    <tr>
+      <td>Easy to say/spell</td>
+      <td class="check">Yes</td>
+      <td class="check">Yes</td>
+      <td class="check">Yes</td>
+    </tr>
+    <tr>
+      <td>Distinctive / ownable</td>
+      <td class="check">Very</td>
+      <td class="cross">Generic</td>
+      <td class="cross">Descriptive</td>
+    </tr>
+    <tr>
+      <td>.com available</td>
+      <td class="check">Yes</td>
+      <td class="cross">No</td>
+      <td class="cross">No</td>
+    </tr>
+  </table>
+
+  <div class="divider"></div>
+
+  <h2>The lineage</h2>
+
+  <h2>Honest tradeoffs</h2>
+
+  <div class="reasons">
+    <div class="reason">
+      <div class="number">!</div>
+      <h4>"Imaginal" is not a common word</h4>
+      <p>Most people will hear "imaginary" at first. You'll spell it out sometimes: "I-M-A-G-I-N-A-L, like imagination but real." This is actually a feature for a therapy brand &mdash; it starts a conversation, signals depth, and filters for the right clients. BetterHelp doesn't need that. An expressive arts practice does.</p>
+    </div>
+    <div class="reason">
+      <div class="number">!</div>
+      <h4>15 characters (before .com)</h4>
+      <p>The sweet spot for domain memorability is 6&ndash;14 characters. "imaginalvision" is 15 &mdash; at the upper edge but not disqualifying. For context, "brightervision.com" (a therapy web design company) is 14 characters and has built a successful brand. The meaning carries the length.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2>Competitive landscape</h2>
+
+  <p>Other practices use "imaginal" in their names, but <strong>none</strong> use "Imaginal Vision":</p>
+
+  <table class="comparison">
+    <tr><th>Existing brand</th><th>Focus</th></tr>
+    <tr><td>Imaginal Therapy (imaginaltherapy.com)</td><td>Somatic depth psychotherapy, LA</td></tr>
+    <tr><td>Imaginal Healing Arts (imaginalhealingarts.com)</td><td>Bodywork, yoga, retreats</td></tr>
+    <tr><td>Imaginal Arts Integrative Wellness</td><td>Health coaching + mental health, NC</td></tr>
+    <tr><td>Meridian University (formerly Institute of Imaginal Studies)</td><td>Graduate programs in psychology</td></tr>
+  </table>
+
+  <p>The word "imaginal" signals belonging to a specific therapeutic tradition. Having it in your name tells other practitioners and informed clients exactly where you stand philosophically &mdash; in the lineage of Corbin, Hillman, and McNiff. "Imaginal Vision" is distinctive within this space &mdash; <strong>no existing business uses this name.</strong></p>
+
+  <div class="divider"></div>
+
+  <h2>Social media &amp; trademark</h2>
+
+  <table class="comparison">
+    <tr><th>Platform</th><th>@imaginalvision</th></tr>
+    <tr><td>Instagram</td><td class="check">Available</td></tr>
+    <tr><td>X / Twitter</td><td class="check">Available</td></tr>
+    <tr><td>Facebook</td><td class="check">Available</td></tr>
+    <tr><td>LinkedIn</td><td class="check">Available</td></tr>
+    <tr><td>Domain (.com)</td><td class="check">Available</td></tr>
+    <tr><td>Domain (.art)</td><td class="check">Available</td></tr>
+  </table>
+
+  <p>No registered trademark for "Imaginal Vision" was found. The word "imaginal" is a common English adjective (used in biology and philosophy), so it is not protectable as a standalone word. The combination "Imaginal Vision" in the therapy/arts class of services should be registrable. Formal verification recommended at <a href="https://tmsearch.uspto.gov/" style="color:#6b5a48">USPTO TESS</a>.</p>
+
+  <p style="background:#f5f0eb; padding:1rem 1.5rem; border-radius:8px; font-weight:400;"><strong>Recommendation:</strong> Register the domain and secure @imaginalvision on all platforms quickly. There are 15&ndash;20 active businesses using "imaginal" in the therapy/wellness space, and someone could independently land on this combination.</p>
+
+  <div class="divider"></div>
+
+  <h2>The lineage</h2>
+
+  <h3>Henry Corbin (1903&ndash;1978)</h3>
+  <p>French philosopher who coined <em>mundus imaginalis</em> in his 1964 essay. Distinguished the <strong>imaginal</strong> (an ontologically real intermediate realm accessed through creative imagination) from the <strong>imaginary</strong> (mere fantasy). Derived from the Islamic philosophical concepts of <em>alam al-mithal</em> (world of archetypal images) and <em>barzakh</em> (the interworld).</p>
+
+  <h3>Carl Jung (1875&ndash;1961)</h3>
+  <p>Developed <strong>active imagination</strong> between 1913&ndash;1916 &mdash; a technique where unconscious contents are engaged through images, painting, sculpting, writing, and dialogue. Jung held that <strong>psyche and image are one</strong>. Active imagination is the direct precursor to all imaginal therapeutic work.</p>
+
+  <h3>James Hillman (1926&ndash;2011)</h3>
+  <p>Founded archetypal psychology. Replaced "unconscious" with <strong>imagination</strong> as the basis of psyche. His book <em>Re-Visioning Psychology</em> (1975) explicitly frames the psychological project as one of transformed <strong>vision</strong>. His concept of the "imaginal ego" means: maturity is not control but <em>depth of perception</em>, not distance from imagination but deeper participation in it.</p>
+
+  <h3>Shaun McNiff &amp; Expressive Arts Therapy (1974&ndash;present)</h3>
+  <p>McNiff founded the first integrated expressive arts therapy program at Lesley University in 1974. His method &mdash; developed in <em>Art as Medicine: Creating a Therapy of the Imagination</em> &mdash; involves dialoguing with images and treating creative works as autonomous imaginal presences. Together with <strong>Paolo Knill</strong> and <strong>Stephen Levine</strong>, he built an intermodal approach where the <strong>imaginal</strong> is central to theory and practice.</p>
+
+</section>
+
+<footer>
+  <p>Prepared April 2026 &mdash; Domain status verified via WHOIS<br>
+  Sources: Corbin, <em>Mundus Imaginalis</em> (1964) &bull; Hillman, <em>Re-Visioning Psychology</em> (1975) &bull; McNiff, <em>Art as Medicine</em> (1992) &bull; Casey, <em>Imagining</em> (2000) &bull; Domain research via domainsnapai.com, hostingadvice.com, brightervision.com</p>
+</footer>
+
+</body>
+</html>

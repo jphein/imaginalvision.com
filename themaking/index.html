@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imaginal Vision — Design Brainstorm</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    background: #1a1a2e;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .header {
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 2.5rem;
+    color: #c9b8a8;
+  }
+
+  .header p {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  nav a {
+    color: #c4b5fd;
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 0.4rem 1rem;
+    border: 1px solid rgba(196,181,253,0.2);
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+
+  nav a:hover, nav a.active {
+    background: rgba(196,181,253,0.1);
+    border-color: rgba(196,181,253,0.4);
+  }
+
+  .page { display: none; padding: 2rem; max-width: 900px; margin: 0 auto; }
+  .page.active { display: block; }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.8rem;
+    color: #c9b8a8;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  p { margin-bottom: 1rem; color: rgba(255,255,255,0.7); }
+
+  .subtitle { color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+  .label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    font-weight: 500;
+  }
+
+  .section { margin-bottom: 2rem; }
+
+  .options { display: grid; gap: 1.5rem; }
+
+  .option {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .option:hover {
+    border-color: rgba(196,181,253,0.3);
+    background: rgba(255,255,255,0.05);
+  }
+
+  .letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #c4b5fd;
+    line-height: 1;
+    min-width: 2rem;
+  }
+
+  .content h3 { margin-top: 0; }
+
+  .pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 0.75rem;
+  }
+
+  .pros h4 { color: #4ade80; font-size: 0.8rem; margin-bottom: 0.3rem; }
+  .cons h4 { color: #fda4af; font-size: 0.8rem; margin-bottom: 0.3rem; }
+  .pros ul, .cons ul { font-size: 0.8rem; padding-left: 1.2rem; color: rgba(255,255,255,0.6); }
+  .pros li, .cons li { margin-bottom: 0.2rem; }
+
+  .mockup {
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 1rem 0;
+  }
+
+  .mockup-header {
+    background: rgba(255,255,255,0.05);
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .mockup-body { padding: 0; }
+
+  strong { color: rgba(255,255,255,0.9); font-weight: 500; }
+
+  ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+  li { margin-bottom: 0.3rem; color: rgba(255,255,255,0.7); }
+
+  @media (max-width: 600px) {
+    .pros-cons { grid-template-columns: 1fr; }
+    nav { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Imaginal Vision</h1>
+  <p>Design brainstorm — April 3, 2026</p>
+</div>
+
+<nav>
+  <a href="#approaches" class="active" onclick="show('approaches')">Approaches</a>
+  <a href="#structure" onclick="show('structure')">Page Structure</a>
+  <a href="#aesthetic" onclick="show('aesthetic')">Aesthetic Meld</a>
+</nav>
+
+<!-- Page 1: Approaches -->
+<div id="approaches" class="page active">
+<h2>Three Approaches for imaginalvision.com</h2>
+<p class="subtitle">Landing page structure — pick the one that feels right</p>
+
+<div class="options">
+  <div class="option">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Portal Hub — Equal Weight</h3>
+      <p>A beautiful entry page with the Imaginal Vision brand at top, then three cards linking to each offering: <strong>Art Cards</strong>, <strong>Dreamspace</strong>, and <strong>Creative Sight Counseling</strong>. Minimal text — mostly visual. Like a gallery entrance with three doors.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>Clean, simple, fast to build</li>
+          <li>Each project gets equal presence</li>
+          <li>Easy to add new offerings later</li>
+        </ul></div>
+        <div class="cons"><h4>Cons</h4><ul>
+          <li>Doesn't tell the story — just a menu</li>
+          <li>Visitors need to click again to learn anything</li>
+          <li>Weaker for SEO (thin content)</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" style="border-color: rgba(196,181,253,0.3); background: rgba(196,181,253,0.05);">
+    <div class="letter">B ✓</div>
+    <div class="content">
+      <h3>Narrative Scroll — Tools as Story (Selected)</h3>
+      <p>A single-page scroll that tells the story: <strong>who Cassandra is</strong> → <strong>what the imaginal means</strong> → <strong>the tools she's built</strong> (Art Cards, Dreamspace) → <strong>who they're for</strong> (clients, students, fellow therapists) → <strong>Creative Sight Counseling</strong> practice info → <strong>contact</strong>. The domain proposal page's style, but as a real site.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>Tells the full story — visitors understand the vision</li>
+          <li>Great for SEO (rich content, keywords)</li>
+          <li>Builds trust before asking people to try tools</li>
+          <li>Works for all 4 audiences</li>
+        </ul></div>
+        <div class="cons"><h4>Cons</h4><ul>
+          <li>More content to write and maintain</li>
+          <li>Longer to build</li>
+          <li>Risk of being too long if not curated well</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Hero + Cards — Quick Impact</h3>
+      <p>A bold hero section with <em>"Imaginal Vision — Expressive Art Therapy &amp; Digital Tools"</em> and Cassandra's tagline, followed immediately by two featured tool cards with "Try it" buttons. Below that, compact "About" section and link to Creative Sight Counseling.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul>
+          <li>Fast to grasp — tools are front and center</li>
+          <li>Gets people into the tools quickly</li>
+          <li>Balanced: not too thin, not too long</li>
+        </ul></div>
+        <div class="cons"><h4>Cons</h4><ul>
+          <li>Less room for the philosophical depth</li>
+          <li>Counseling practice is secondary</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Page 2: Structure -->
+<div id="structure" class="page">
+<h2>Page Structure — Narrative Scroll</h2>
+<p class="subtitle">Seven sections, one continuous scroll. Each section serves a specific audience need.</p>
+
+<div class="mockup">
+  <div class="mockup-header">imaginalvision.com — Full Page Layout</div>
+  <div class="mockup-body" style="font-family: Georgia, serif; background: #faf9f7; padding: 0; color: #3a3028;">
+
+    <div style="background: linear-gradient(135deg, #f5f0eb 0%, #d4c8bb 60%, #c9b8a8 100%); padding: 3rem 2rem; text-align: center; min-height: 180px; display: flex; flex-direction: column; justify-content: center;">
+      <div style="font-size: 2.2rem; font-style: italic; color: #3a3028; letter-spacing: -0.02em;">Imaginal Vision</div>
+      <div style="font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: #8a7a6a; margin: 0.5rem 0;">Expressive Art Therapy &amp; Digital Tools</div>
+      <div style="font-style: italic; color: #5a4a3a; font-size: 0.85rem; margin-top: 0.5rem;">Where creative expression meets therapeutic insight</div>
+    </div>
+
+    <div style="padding: 1.5rem 2rem; border-bottom: 1px solid #ebe6e0;">
+      <div style="font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: #c9b8a8; margin-bottom: 0.3rem;">Section 1</div>
+      <div style="font-size: 1.1rem; color: #3a3028; font-weight: 600;">What is the Imaginal?</div>
+      <div style="font-size: 0.75rem; color: #6a6a6a; margin-top: 0.3rem;">Brief, accessible explanation of the imaginal tradition. Corbin → Hillman → McNiff in 3 sentences. A quote from Hillman or Casey.</div>
+    </div>
+
+    <div style="padding: 1.5rem 2rem; border-bottom: 1px solid #ebe6e0;">
+      <div style="font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: #c9b8a8; margin-bottom: 0.3rem;">Section 2</div>
+      <div style="font-size: 1.1rem; color: #3a3028; font-weight: 600;">The Tools</div>
+      <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+        <div style="flex: 1; background: white; border: 1px solid #ebe6e0; border-radius: 8px; padding: 0.8rem;">
+          <div style="background: #241535; color: #c4b5fd; text-align: center; padding: 1rem; border-radius: 4px; font-size: 0.8rem; margin-bottom: 0.5rem;">Art Cards Preview</div>
+          <div style="font-size: 0.8rem; font-weight: 600; color: #3a3028;">Art Cards</div>
+          <div style="font-size: 0.7rem; color: #6a6a6a;">Expressive art card deck for therapeutic exploration and clinical training.</div>
+          <div style="font-size: 0.65rem; color: #8a7a6a; margin-top: 0.3rem; font-style: italic;">Used at CIIS for intake training</div>
+        </div>
+        <div style="flex: 1; background: white; border: 1px solid #ebe6e0; border-radius: 8px; padding: 0.8rem;">
+          <div style="background: #1a1025; color: #c4b5fd; text-align: center; padding: 1rem; border-radius: 4px; font-size: 0.8rem; margin-bottom: 0.5rem;">Dreamspace Preview</div>
+          <div style="font-size: 0.8rem; font-weight: 600; color: #3a3028;">Dreamspace</div>
+          <div style="font-size: 0.7rem; color: #6a6a6a;">Digital collage tool for dreamwork and creative self-exploration.</div>
+          <div style="font-size: 0.65rem; color: #8a7a6a; margin-top: 0.3rem; font-style: italic;">Self-guided or therapist-facilitated</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding: 1.5rem 2rem; border-bottom: 1px solid #ebe6e0;">
+      <div style="font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: #c9b8a8; margin-bottom: 0.3rem;">Section 3</div>
+      <div style="font-size: 1.1rem; color: #3a3028; font-weight: 600;">Who It's For</div>
+      <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem; font-size: 0.7rem;">
+        <div style="flex: 1; background: #f5f0eb; padding: 0.5rem; border-radius: 6px; color: #5a4a3a;"><strong style="color:#3a3028;">Clients</strong> — Use between sessions or during telehealth</div>
+        <div style="flex: 1; background: #f5f0eb; padding: 0.5rem; border-radius: 6px; color: #5a4a3a;"><strong style="color:#3a3028;">Students &amp; Educators</strong> — Training tool for expressive arts programs</div>
+        <div style="flex: 1; background: #f5f0eb; padding: 0.5rem; border-radius: 6px; color: #5a4a3a;"><strong style="color:#3a3028;">Therapists</strong> — Integrate into your own practice</div>
+      </div>
+    </div>
+
+    <div style="padding: 1.5rem 2rem; border-bottom: 1px solid #ebe6e0;">
+      <div style="font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: #c9b8a8; margin-bottom: 0.3rem;">Section 4</div>
+      <div style="font-size: 1.1rem; color: #3a3028; font-weight: 600;">About Cassandra</div>
+      <div style="font-size: 0.75rem; color: #6a6a6a; margin-top: 0.3rem;">LMFT, CIIS graduate, 9+ years clinical experience, Jungian/transpersonal orientation. Photo + link to Creative Sight Counseling.</div>
+    </div>
+
+    <div style="padding: 1.5rem 2rem; border-bottom: 1px solid #ebe6e0;">
+      <div style="font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: #c9b8a8; margin-bottom: 0.3rem;">Section 5</div>
+      <div style="font-size: 1.1rem; color: #3a3028; font-weight: 600;">Creative Sight Counseling</div>
+      <div style="font-size: 0.75rem; color: #6a6a6a; margin-top: 0.3rem;">Compact practice info: modalities, populations, sliding scale $132-200, Nevada City + online CA.</div>
+    </div>
+
+    <div style="padding: 1.5rem 2rem; background: #f0ebe5; text-align: center;">
+      <div style="font-size: 0.75rem; color: #6a6a6a;">Contact / Instagram / Client Portal / LMFT #116676</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Page 3: Aesthetic -->
+<div id="aesthetic" class="page">
+<h2>Aesthetic DNA — Finding the Common Thread</h2>
+<p class="subtitle">Three sites, one visual language waiting to emerge</p>
+
+<div class="section">
+  <h3>The Three Palettes</h3>
+  <div style="display: flex; gap: 1.5rem; margin: 1rem 0; flex-wrap: wrap;">
+
+    <div style="flex: 1; min-width: 200px;">
+      <div class="label">Art Cards</div>
+      <div style="display: flex; gap: 2px; height: 40px; border-radius: 6px; overflow: hidden; margin: 0.5rem 0;">
+        <div style="flex:1; background: #000;"></div>
+        <div style="flex:1; background: #0f0a02;"></div>
+        <div style="flex:1; background: #2a1a00;"></div>
+        <div style="flex:1; background: #6b5520;"></div>
+        <div style="flex:1; background: #a67c00;"></div>
+        <div style="flex:1; background: #c9a84c;"></div>
+        <div style="flex:1; background: #f0d875;"></div>
+        <div style="flex:1; background: #ffe8a0;"></div>
+      </div>
+      <p style="font-size: 0.8rem; opacity: 0.7;">Black → Dark brown → Gold → Cream<br>Font: <strong>Cinzel</strong> (serif) + Inter</p>
+      <p style="font-size: 0.75rem;">Ornate, mystical, tarot. Sacred geometry, gold shimmer, sparkle particles.</p>
+    </div>
+
+    <div style="flex: 1; min-width: 200px;">
+      <div class="label">Dreamspace</div>
+      <div style="display: flex; gap: 2px; height: 40px; border-radius: 6px; overflow: hidden; margin: 0.5rem 0;">
+        <div style="flex:1; background: #0f0a1a;"></div>
+        <div style="flex:1; background: #1a1025;"></div>
+        <div style="flex:1; background: #241535;"></div>
+        <div style="flex:1; background: #7c3aed;"></div>
+        <div style="flex:1; background: #a78bfa;"></div>
+        <div style="flex:1; background: #c4b5fd;"></div>
+        <div style="flex:1; background: #93c5fd;"></div>
+        <div style="flex:1; background: #fda4af;"></div>
+      </div>
+      <p style="font-size: 0.8rem; opacity: 0.7;">Deep violet → Purple → Lavender → Moonlight → Rose<br>Font: <strong>Quicksand</strong> (sans-serif)</p>
+      <p style="font-size: 0.75rem;">Cosmic, dreamy, creative. Floating orbs, glow effects, particle drift.</p>
+    </div>
+
+    <div style="flex: 1; min-width: 200px;">
+      <div class="label">Creative Sight Counseling</div>
+      <div style="display: flex; gap: 2px; height: 40px; border-radius: 6px; overflow: hidden; margin: 0.5rem 0;">
+        <div style="flex:1; background: #faf9f7;"></div>
+        <div style="flex:1; background: #f5f0eb;"></div>
+        <div style="flex:1; background: #e8e0d8;"></div>
+        <div style="flex:1; background: #d4c8bb;"></div>
+        <div style="flex:1; background: #c9b8a8;"></div>
+        <div style="flex:1; background: #8a7a6a;"></div>
+        <div style="flex:1; background: #5a4a3a;"></div>
+        <div style="flex:1; background: #3a3028;"></div>
+      </div>
+      <p style="font-size: 0.8rem; opacity: 0.7;">Warm cream → Sand → Earth → Dark brown<br>Font: <strong>Cormorant Garamond</strong> (serif) + Inter</p>
+      <p style="font-size: 0.75rem;">Warm, grounded, contemplative. Clean minimalism with depth.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>What They Share</h3>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;">
+    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1rem;">
+      <strong>Depth through layers</strong>
+      <p style="font-size: 0.8rem; margin-top: 0.3rem;">All three use layered transparency and subtle gradients. The common language is <em>luminosity emerging from darkness</em>.</p>
+    </div>
+    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1rem;">
+      <strong>Warm + Cool tension</strong>
+      <p style="font-size: 0.8rem; margin-top: 0.3rem;">Gold ↔ Purple ↔ Earth. The brand lives in the <em>space between warm and cool</em> — fitting for "imaginal."</p>
+    </div>
+    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1rem;">
+      <strong>Glow & shimmer</strong>
+      <p style="font-size: 0.8rem; margin-top: 0.3rem;">All three treat light as <em>alive</em> — gold shimmer, lavender glow, drift animations.</p>
+    </div>
+    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1rem;">
+      <strong>Serif + Sans pairing</strong>
+      <p style="font-size: 0.8rem; margin-top: 0.3rem;">A <em>classical serif for soul, modern sans for interface</em>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>The Meld — Imaginal Vision Palette</h3>
+  <p class="subtitle">A landing page that feels like <em>home</em> for all three sites</p>
+
+  <div style="margin: 1rem 0;">
+    <div class="label">Light mode base</div>
+    <div style="display: flex; gap: 2px; height: 50px; border-radius: 8px; overflow: hidden; margin: 0.5rem 0;">
+      <div style="flex:1; background: #faf9f7;"></div>
+      <div style="flex:1; background: #f5f0eb;"></div>
+      <div style="flex:1; background: #e8e0d8;"></div>
+      <div style="flex:1; background: #c9b8a8;"></div>
+      <div style="flex:1; background: #8a7a6a;"></div>
+      <div style="flex:1; background: #5a4a3a;"></div>
+      <div style="flex:1; background: #3a3028;"></div>
+    </div>
+
+    <div class="label" style="margin-top: 1rem;">Accent bridges to the tools</div>
+    <div style="display: flex; gap: 2px; height: 30px; border-radius: 6px; overflow: hidden; margin: 0.5rem 0;">
+      <div style="flex:1; background: #c9a84c;"></div>
+      <div style="flex:1; background: #a78bfa;"></div>
+      <div style="flex:1; background: #c4b5fd;"></div>
+    </div>
+    <p style="font-size: 0.75rem; opacity: 0.6;">Gold for Art Cards, lavender for Dreamspace — each tool card carries its own accent</p>
+
+    <div class="label" style="margin-top: 1rem;">Dark mode</div>
+    <div style="display: flex; gap: 2px; height: 50px; border-radius: 8px; overflow: hidden; margin: 0.5rem 0;">
+      <div style="flex:1; background: #0f0a12;"></div>
+      <div style="flex:1; background: #1a1320;"></div>
+      <div style="flex:1; background: #251a30;"></div>
+      <div style="flex:1; background: #c9b8a8;"></div>
+      <div style="flex:1; background: #d4c8bb;"></div>
+      <div style="flex:1; background: #f5f0eb;"></div>
+    </div>
+    <p style="font-size: 0.75rem; opacity: 0.6;">Dreamspace's deep violet-black base, warm earth tones as text — bridging both worlds</p>
+  </div>
+</div>
+</div>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
