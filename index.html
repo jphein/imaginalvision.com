@@ -35,6 +35,15 @@ html {
   scroll-behavior: smooth;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
 img, svg {
   display: block;
   max-width: 100%;
@@ -64,7 +73,7 @@ button {
   --text-primary: #3a3028;
   --text-body: #4a4a4a;
   --text-secondary: #5a4a3a;
-  --text-muted: #8a7a6a;
+  --text-muted: #7a6a5a;
   --accent-earth: #c9b8a8;
   --accent-gold: #c9a84c;
   --accent-lavender: #a78bfa;
@@ -94,7 +103,7 @@ button {
     --text-primary: #f5f0eb;
     --text-body: #d4c8bb;
     --text-secondary: #c9b8a8;
-    --text-muted: #8a7a6a;
+    --text-muted: #9a8a7a;
     --accent-earth: #c9b8a8;
     --accent-gold: #c9a84c;
     --accent-lavender: #c4b5fd;
@@ -119,7 +128,7 @@ button {
   --text-primary: #f5f0eb;
   --text-body: #d4c8bb;
   --text-secondary: #c9b8a8;
-  --text-muted: #8a7a6a;
+  --text-muted: #9a8a7a;
   --accent-earth: #c9b8a8;
   --accent-gold: #c9a84c;
   --accent-lavender: #c4b5fd;
@@ -917,8 +926,11 @@ footer a:hover {
   </button>
 </nav>
 
+<main>
+
 <!-- ===== TOOLS ===== -->
 <section id="tools" class="tools fade-in">
+  <h2 class="sr-only">Tools</h2>
   <div class="tool-cards">
     <a href="https://artcards.imaginalvision.com" class="tool-card tool-card--gold">
       <div class="preview">
@@ -1026,6 +1038,8 @@ footer a:hover {
   </div>
   <a href="https://creativesightcounseling.com" class="practice-cta" target="_blank" rel="noopener">Learn More at Creative Sight Counseling</a>
 </section>
+
+</main>
 
 <!-- ===== FOOTER ===== -->
 <footer>
