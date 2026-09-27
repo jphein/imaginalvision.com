@@ -894,7 +894,7 @@ footer a:hover {
     <span class="icon"></span>
   </button>
   <div class="hero-content">
-    <img src="images/logo-white.png" alt="" class="hero-logo">
+    <img src="images/logo-white.webp" alt="" class="hero-logo" width="500" height="500">
     <h1><em>Imaginal</em> Vision</h1>
     <div class="subtitle">Expressive Art Therapy &amp; Digital Tools</div>
     <div class="tagline">Where creative expression meets therapeutic insight</div>
@@ -917,7 +917,7 @@ footer a:hover {
   <div class="tool-cards">
     <a href="https://artcards.imaginalvision.com" class="tool-card tool-card--gold">
       <div class="preview">
-        <img id="artcards-img" src="images/artcards-light.png" alt="Art Cards — expressive art card deck" class="preview-img">
+        <img id="artcards-img" src="images/artcards-light.webp" alt="Art Cards — expressive art card deck" class="preview-img" width="1200" height="549" loading="lazy" decoding="async">
       </div>
       <div class="card-body">
         <h3>Art Cards</h3>
@@ -928,7 +928,7 @@ footer a:hover {
     </a>
     <a href="https://dreamscape.imaginalvision.com" class="tool-card tool-card--lavender">
       <div class="preview">
-        <img id="dreamscape-img" src="images/dreamscape-light.png" alt="Dreamscape — digital collage tool" class="preview-img">
+        <img id="dreamscape-img" src="images/dreamscape-light.webp" alt="Dreamscape — digital collage tool" class="preview-img" width="1200" height="686" loading="lazy" decoding="async">
       </div>
       <div class="card-body">
         <h3>Dreamscape</h3>
@@ -983,7 +983,7 @@ footer a:hover {
 <section id="about" class="fade-in">
   <h2>About</h2>
   <div class="about-content">
-    <img src="images/cassandra.jpg" alt="Cassandra Clark, LMFT" class="about-photo">
+    <img src="images/cassandra.webp" alt="Cassandra Clark, LMFT" class="about-photo" width="540" height="720" loading="lazy" decoding="async">
     <div class="about-text">
       <p>Cassandra Clark is a Licensed Marriage and Family Therapist (LMFT&nbsp;#116676) with over nine years of clinical experience. She holds an MA in Counseling Psychology with an emphasis in Expressive Arts Therapy from the California Institute of Integral Studies (CIIS) in San Francisco.</p>
       <p>Her practice is rooted in Jungian and transpersonal psychology, drawing on expressive arts, dreamwork, and guided imagery to help clients access deeper layers of meaning. She created Art Cards and Dreamscape as extensions of this work&mdash;tools that bring the therapeutic imagination into digital space.</p>
@@ -1073,14 +1073,14 @@ footer a:hover {
     const artcardsImg = document.getElementById('artcards-img');
     if (artcardsImg) {
       artcardsImg.src = effective === 'dark'
-        ? 'images/artcards-dark.png'
-        : 'images/artcards-light.png';
+        ? 'images/artcards-dark.webp'
+        : 'images/artcards-light.webp';
     }
     const dreamscapeImg = document.getElementById('dreamscape-img');
     if (dreamscapeImg) {
       dreamscapeImg.src = effective === 'dark'
-        ? 'images/dreamscape-dark.png'
-        : 'images/dreamscape-light.png';
+        ? 'images/dreamscape-dark.webp'
+        : 'images/dreamscape-light.webp';
     }
   }
 
