@@ -6,3 +6,6 @@ node_modules/
 .DS_Store
 .playwright-mcp/
 .wrangler/
+
+# local notes and pre-change backups (not published)
+scratch/
